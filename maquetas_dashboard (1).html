@@ -218,7 +218,7 @@ async function loadDashboard() {
   try {
     setStatus('Conectando con Trello...');
     const boards = await trelloFetch('/members/me/boards?fields=name,id');
-    const board = boards.find(b => b.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes('produccion'));
+    const board = boards.find(b => b.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes('proyectos en produccion'));
     if (!board) throw new Error('Tablero "Proyectos en Producción" no encontrado');
 
     const [customFields, cards] = await Promise.all([
