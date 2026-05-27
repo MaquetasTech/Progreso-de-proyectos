@@ -182,7 +182,7 @@ async function trelloFetch(path) {
   return r.json();
 }
 
-async function getHoursForProject(wsId, projectId) {
+fetch('https://reports.api.clockify.me/v1/workspaces/' + (await (await fetch('https://api.clockify.me/api/v1/workspaces', {headers:{'X-Api-Key':localStorage.getItem('mq_clockify_key')}})).json())[0].id + '/reports/summary', {method:'POST', headers:{'X-Api-Key':localStorage.getItem('mq_clockify_key'),'Content-Type':'application/json'}, body: JSON.stringify({dateRangeStart:'2020-01-01T00:00:00Z', dateRangeEnd: new Date().toISOString(), summaryFilter:{groups:['PROJECT']}})}).then(r=>r.json()).then(d=>console.log(d)){
   if (!projectId) return 0;
   try {
     // Usar time-entries en lugar de reports (funciona en plan gratuito)
