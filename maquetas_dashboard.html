@@ -4,244 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maquetas.tech — Producción</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#f5f4f1;--surface:#fff;--surface2:#f0eeea;--border:#e0ddd8;
-    --text:#1a1a18;--text2:#6b6b66;--text3:#a0a09a;
-    --accent:#c4922a;--green:#2d8f5e;--amber:#c47a1a;--red:#c43030;
-    --green-bg:rgba(45,143,94,0.08);--amber-bg:rgba(196,122,26,0.08);--red-bg:rgba(196,48,48,0.08);
-    --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
-  }
-  body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;min-height:100vh;padding:32px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0ede8;
+  --font:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
 
-  /* SETUP */
-  #setup-screen{display:none;max-width:480px;margin:80px auto}
-  #setup-screen h1{font-size:22px;font-weight:400;margin-bottom:6px;letter-spacing:-0.02em}
-  #setup-screen p{font-size:13px;color:var(--text2);margin-bottom:32px;line-height:1.6}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
-  .field input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--mono);font-size:12px;outline:none}
-  .field input:focus{border-color:var(--accent)}
-  .setup-btn{width:100%;padding:12px;background:var(--accent);border:none;border-radius:6px;color:#fff;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;margin-top:8px}
-  .setup-note{font-size:11px;color:var(--text3);margin-top:12px;text-align:center;line-height:1.6}
+  --ok:#1a7a4a;        --ok-mid:#2d9e62;    --ok-light:#e6f5ed;   --ok-border:#b8dfc9;
+  --warn:#b56a00;      --warn-mid:#d98a00;  --warn-light:#fff3e0; --warn-border:#f5cc7a;
+  --red:#b82020;       --red-mid:#d93030;   --red-light:#fdeaea;  --red-border:#f0a0a0;
+  --crit:#7a0000;      --crit-mid:#a00000;  --crit-light:#f5d0d0; --crit-border:#d06060;
+  --neutral:#4a4a46;   --neutral-light:#f5f4f1; --neutral-border:#dddbd6;
+}
 
-  /* HEADER */
-  #dashboard-screen{display:none}
-  header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
-  .logo-area h1{font-size:11px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-  .logo-area p{font-size:22px;font-weight:300;color:var(--text);letter-spacing:-0.02em}
-  .header-right{display:flex;align-items:center;gap:12px}
-  #last-update{font-size:11px;color:var(--text3);font-family:var(--mono)}
-  .refresh-btn{background:none;border:1px solid var(--border);color:var(--text2);padding:8px 14px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.15s}
-  .refresh-btn:hover{border-color:var(--accent);color:var(--accent)}
-  .upload-btn{background:var(--accent);border:none;color:#fff;padding:8px 14px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px}
-  .upload-btn:hover{opacity:0.9}
-  .reset-btn{background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:var(--font);padding:4px}
-  .reset-btn:hover{color:var(--red)}
-  #csv-input{display:none}
+body{background:var(--bg);font-family:var(--font);font-size:15px;min-height:100vh;padding:28px 32px;color:#1a1a18}
 
-  /* CSV BANNER */
-  .csv-banner{background:var(--green-bg);border:1px solid rgba(45,143,94,0.2);border-radius:8px;padding:10px 16px;margin-bottom:24px;font-size:12px;color:var(--green);display:flex;align-items:center;gap:10px}
-  .csv-date{font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+/* ── SETUP ── */
+#setup-screen{display:none;max-width:460px;margin:80px auto;background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+#setup-screen h1{font-size:20px;font-weight:500;margin-bottom:8px}
+#setup-screen p{font-size:13px;color:#777;margin-bottom:24px;line-height:1.6}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
+.field input{width:100%;background:#f8f7f5;border:1px solid #e0ddd8;border-radius:6px;padding:9px 12px;color:#1a1a18;font-family:var(--mono);font-size:12px;outline:none}
+.field input:focus{border-color:var(--ok)}
+.setup-btn{width:100%;padding:11px;background:var(--ok);border:none;border-radius:6px;color:#fff;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;margin-top:4px}
+.setup-note{font-size:11px;color:#bbb;margin-top:10px;text-align:center}
 
-  /* SUMMARY */
-  .summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
-  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 20px}
-  .stat-label{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
-  .stat-value{font-size:26px;font-weight:300;color:var(--text);letter-spacing:-0.02em;font-family:var(--mono)}
-  .stat-value span{font-size:13px;color:var(--text2);font-family:var(--font);margin-left:3px}
-  .stat-card.alert .stat-value{color:var(--red)}
-  .stat-card.good .stat-value{color:var(--green)}
-  .stat-sub{font-size:11px;color:var(--text3);margin-top:4px}
+/* ── HEADER ── */
+#dashboard-screen{display:none}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.logo h1{font-size:11px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#b8a070;margin-bottom:2px}
+.logo p{font-size:20px;font-weight:300;color:#1a1a18;letter-spacing:-0.01em}
+.hbtns{display:flex;align-items:center;gap:10px}
+#last-update{font-size:11px;color:#aaa;font-family:var(--mono);margin-right:4px}
+.btn-ghost{background:none;border:1px solid #d0cdc8;color:#888;padding:7px 14px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.15s}
+.btn-ghost:hover{border-color:var(--ok);color:var(--ok)}
+.btn-primary{background:var(--ok);border:none;color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px}
+.btn-primary:hover{opacity:0.88}
+.btn-danger{background:none;border:none;color:#ccc;font-size:11px;cursor:pointer;font-family:var(--font)}
+.btn-danger:hover{color:var(--red)}
+#csv-input{display:none}
 
-  /* TABLE */
-  .table-header{display:grid;grid-template-columns:220px 1fr 130px 80px 150px;gap:20px;padding:0 20px 10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)}
-  .th-right{text-align:right}
+/* ── CSV BANNER ── */
+.csv-ok{background:var(--ok-light);border:1px solid var(--ok-border);border-radius:8px;padding:9px 16px;margin-bottom:20px;font-size:12px;color:var(--ok);display:flex;align-items:center;gap:10px}
 
-  /* PROJECT ROWS */
-  .projects-grid{display:flex;flex-direction:column;gap:8px}
-  .project-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:grid;grid-template-columns:220px 1fr 130px 80px 150px;align-items:center;gap:20px;transition:border-color 0.15s,box-shadow 0.15s}
-  .project-row:hover{border-color:#c8c5be;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
-  .project-row.ok{border-left:3px solid var(--green)}
-  .project-row.warning{border-left:3px solid var(--amber)}
-  .project-row.danger{border-left:3px solid var(--red)}
-  .project-row.critical{border-left:3px solid var(--red);background:#fff8f8}
+/* ── SUMMARY CARDS ── */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.scard{border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.scard-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.65;font-weight:500}
+.scard-value{font-size:32px;font-weight:300;font-family:var(--mono);letter-spacing:-0.03em;line-height:1}
+.scard-sub{font-size:12px;opacity:0.7;margin-top:2px}
+.scard.neutral{background:var(--neutral-light);border:1px solid var(--neutral-border);color:var(--neutral)}
+.scard.ok{background:var(--ok-light);border:1px solid var(--ok-border);color:var(--ok)}
+.scard.warn{background:var(--warn-light);border:1px solid var(--warn-border);color:var(--warn)}
+.scard.danger{background:var(--red-light);border:1px solid var(--red-border);color:var(--red)}
 
-  .project-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .project-id{font-size:11px;color:var(--text3);font-family:var(--mono)}
+/* ── PROJECT CARDS ── */
+.projects{display:flex;flex-direction:column;gap:10px}
 
-  /* PROGRESS */
-  .progress-wrap{}
-  .progress-track{height:6px;background:var(--surface2);border-radius:3px;margin-bottom:5px;overflow:hidden}
-  .progress-fill{height:100%;border-radius:3px;transition:width 0.8s cubic-bezier(0.4,0,0.2,1)}
-  .progress-labels{display:flex;justify-content:space-between;font-size:11px;font-family:var(--mono);color:var(--text3)}
-  .progress-labels .over{color:var(--red);font-weight:500}
-  .critical-badge{display:inline-flex;align-items:center;gap:4px;background:var(--red-bg);color:var(--red);font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;margin-top:4px}
+.pcard{border-radius:10px;padding:18px 22px;display:grid;grid-template-columns:1fr 2fr auto auto auto;align-items:center;gap:20px;border:1.5px solid transparent}
+.pcard.ok   {background:var(--ok-light);   border-color:var(--ok-border);  }
+.pcard.warn {background:var(--warn-light);  border-color:var(--warn-border); }
+.pcard.over {background:var(--red-light);   border-color:var(--red-border);  }
+.pcard.crit {background:var(--crit-light);  border-color:var(--crit-border); }
 
-  /* ESTADO */
-  .badge{font-size:11px;font-family:var(--mono);padding:4px 8px;border-radius:4px;display:inline-block;text-align:center;white-space:nowrap}
-  .badge-ok{background:var(--green-bg);color:var(--green)}
-  .badge-warning{background:var(--amber-bg);color:var(--amber)}
-  .badge-danger{background:var(--red-bg);color:var(--red)}
-  .badge-gray{background:var(--surface2);color:var(--text3)}
+/* nombre */
+.pname{font-size:16px;font-weight:600;line-height:1.2;margin-bottom:3px}
+.pid{font-size:11px;font-family:var(--mono);opacity:0.55}
+.pcard.ok   .pname{color:var(--ok)}
+.pcard.warn .pname{color:var(--warn)}
+.pcard.over .pname{color:var(--red)}
+.pcard.crit .pname,.pcard.crit .pid{color:var(--crit)}
 
-  /* PRIORIDAD */
-  .priority-pill{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;white-space:nowrap;display:inline-block}
-  .priority-max{background:#fde8e8;color:#a32d2d}
-  .priority-alta{background:#faeeda;color:#854f0b}
-  .priority-media{background:#e8f4e8;color:#2d6b2d}
-  .priority-baja{background:#e8eef4;color:#2d4a6b}
-  .priority-none{background:var(--surface2);color:var(--text3)}
+/* barra */
+.bar-wrap{}
+.bar-labels{display:flex;justify-content:space-between;font-size:12px;font-family:var(--mono);margin-bottom:5px;font-weight:500}
+.bar-track{height:8px;background:rgba(0,0,0,0.08);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px}
+.pcard.ok   .bar-fill{background:var(--ok-mid)}
+.pcard.warn .bar-fill{background:var(--warn-mid)}
+.pcard.over .bar-fill{background:var(--red-mid)}
+.pcard.crit .bar-fill{background:var(--crit-mid)}
+.bar-over{font-size:11px;margin-top:5px;font-weight:600;display:flex;align-items:center;gap:4px}
+.pcard.over .bar-over,.pcard.crit .bar-over{color:var(--red)}
 
-  /* ENTREGA */
-  .deadline-block{text-align:right}
-  .deadline-date{font-size:13px;font-family:var(--mono);font-weight:500;color:var(--text);margin-bottom:2px;border-bottom:2px solid transparent}
-  .deadline-date.urgent{color:var(--red);border-color:var(--red)}
-  .deadline-date.soon{color:var(--amber);border-color:var(--amber)}
-  .deadline-date.normal{border-color:var(--green)}
-  .deadline-days{font-size:11px;color:var(--text3)}
-  .deadline-days.urgent{color:var(--red);font-weight:500}
-  .deadline-days.soon{color:var(--amber);font-weight:500}
+/* prioridad */
+.ptag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;letter-spacing:0.03em}
+.pcard.ok   .ptag{background:rgba(26,122,74,0.15); color:var(--ok)}
+.pcard.warn .ptag{background:rgba(181,106,0,0.15);  color:var(--warn)}
+.pcard.over .ptag,.pcard.crit .ptag{background:rgba(184,32,32,0.15);color:var(--red)}
 
-  .no-hours{color:var(--text3);font-size:12px}
-  #status-msg{text-align:center;padding:60px 20px;color:var(--text3);font-size:14px}
-  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;animation:pulse 2s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+/* fecha */
+.pdate{text-align:right;min-width:100px}
+.pdate-val{font-size:15px;font-weight:700;font-family:var(--mono);line-height:1.1}
+.pdate-days{font-size:11px;margin-top:2px;opacity:0.7;font-weight:500}
+.pcard.ok .pdate-val{color:var(--ok)}
+.pcard.warn .pdate-val{color:var(--warn)}
+.pcard.over .pdate-val,.pcard.crit .pdate-val{color:var(--red)}
 
-  @media(max-width:1000px){
-    body{padding:16px}
-    .summary-row{grid-template-columns:repeat(2,1fr)}
-    .project-row,.table-header{grid-template-columns:1fr;gap:10px}
-    .table-header{display:none}
-    .deadline-block{text-align:left}
-  }
+/* estado pill */
+.pstatus{min-width:90px;text-align:center}
+.spill{display:inline-block;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;letter-spacing:0.02em}
+.pcard.ok   .spill{background:var(--ok-mid);   color:#fff}
+.pcard.warn .spill{background:var(--warn-mid);  color:#fff}
+.pcard.over .spill{background:var(--red-mid);   color:#fff}
+.pcard.crit .spill{background:var(--crit-mid);  color:#fff}
+
+#status-msg{text-align:center;padding:60px;color:#aaa;font-size:15px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:8px;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+
+@media(max-width:1000px){
+  body{padding:16px}
+  .summary{grid-template-columns:1fr 1fr}
+  .pcard{grid-template-columns:1fr;gap:12px}
+  .pdate{text-align:left}
+}
 </style>
 </head>
 <body>
 
 <div id="setup-screen">
   <h1>Configuración inicial</h1>
-  <p>Introduce las claves de acceso de Trello. Se guardarán en este navegador.</p>
+  <p>Introduce las claves de Trello. Se guardarán en este navegador.</p>
   <div class="field"><label>Trello API Key</label><input type="password" id="input-trello-key" autocomplete="off"></div>
   <div class="field"><label>Trello Token</label><input type="password" id="input-trello-token" autocomplete="off"></div>
   <button class="setup-btn" onclick="saveAndStart()">Guardar y abrir dashboard</button>
-  <p class="setup-note">Las claves se guardan solo en este dispositivo.</p>
+  <p class="setup-note">Solo se envían datos a Trello. Nada más.</p>
 </div>
 
 <div id="dashboard-screen">
   <header>
-    <div class="logo-area">
+    <div class="logo">
       <h1>Panel de control</h1>
       <p>Proyectos en producción</p>
     </div>
-    <div class="header-right">
+    <div class="hbtns">
       <span id="last-update"></span>
-      <button class="reset-btn" onclick="resetConfig()">Cambiar claves</button>
-      <label class="upload-btn" for="csv-input">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        Subir CSV Clockify
+      <button class="btn-danger" onclick="resetConfig()">Cambiar claves</button>
+      <label class="btn-ghost" for="csv-input">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        CSV Clockify
       </label>
       <input type="file" id="csv-input" accept=".csv" onchange="handleCSV(event)">
-      <button class="refresh-btn" onclick="loadDashboard()" id="refresh-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
-        Actualizar Trello
+      <button class="btn-ghost" onclick="loadDashboard()" id="refresh-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+        Actualizar
       </button>
     </div>
   </header>
 
-  <div id="csv-banner" style="display:none" class="csv-banner">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-    <div>
-      <div id="csv-banner-text"></div>
-      <div class="csv-date" id="csv-banner-date"></div>
-    </div>
+  <div id="csv-banner" style="display:none" class="csv-ok">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <div><span id="csv-name"></span> &nbsp;·&nbsp; <span id="csv-date" style="opacity:0.7"></span></div>
   </div>
 
-  <div class="summary-row">
-    <div class="stat-card" id="sc-total"><p class="stat-label">Proyectos activos</p><p class="stat-value" id="stat-count">—</p></div>
-    <div class="stat-card" id="sc-ok"><p class="stat-label">En plazo</p><p class="stat-value" id="stat-ok">—</p><p class="stat-sub" id="stat-ok-sub"></p></div>
-    <div class="stat-card" id="sc-alert"><p class="stat-label">Pasados de horas</p><p class="stat-value" id="stat-alert">—</p><p class="stat-sub" id="stat-alert-sub"></p></div>
-    <div class="stat-card" id="sc-pct"><p class="stat-label">Carga global</p><p class="stat-value" id="stat-pct">—<span>%</span></p><p class="stat-sub" id="stat-pct-sub"></p></div>
-  </div>
-
-  <div class="table-header">
-    <div>Proyecto</div>
-    <div>Progreso de horas</div>
-    <div style="text-align:right">Estado</div>
-    <div style="text-align:center">Prioridad</div>
-    <div style="text-align:right">Entrega</div>
+  <div class="summary">
+    <div class="scard neutral" id="sc0"><p class="scard-label">Proyectos activos</p><p class="scard-value" id="s-total">—</p></div>
+    <div class="scard" id="sc1"><p class="scard-label">En plazo</p><p class="scard-value" id="s-ok">—</p><p class="scard-sub" id="s-ok-sub"></p></div>
+    <div class="scard" id="sc2"><p class="scard-label">Pasados de horas</p><p class="scard-value" id="s-alert">—</p><p class="scard-sub" id="s-alert-sub"></p></div>
+    <div class="scard neutral" id="sc3"><p class="scard-label">Carga global</p><p class="scard-value" id="s-pct">—<span style="font-size:16px;font-family:var(--font)">%</span></p><p class="scard-sub" id="s-pct-sub"></p></div>
   </div>
 
   <div id="projects-container">
     <div id="status-msg"><span class="dot"></span>Cargando datos de Trello...</div>
   </div>
-  <p style="font-size:11px;color:var(--text3);text-align:right;margin-top:12px" id="last-update-footer"></p>
+  <p style="font-size:11px;color:#bbb;text-align:right;margin-top:14px" id="footer-ts"></p>
 </div>
 
 <script>
-const OVER_THRESHOLD = 60; // horas de margen antes de marcar como crítico
+const OVER_THRESHOLD = 60;
 
 let TRELLO_KEY, TRELLO_TOKEN;
 let clockifyHours = {};
 let trelloProjects = [];
 
-function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim() }
-function daysUntil(d){ return d?Math.ceil((new Date(d)-new Date())/86400000):null }
-function formatDate(d){ return d?new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'}):null }
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+const daysUntil = d => d ? Math.ceil((new Date(d)-new Date())/86400000) : null;
+const fmtDate = d => d ? new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'}) : null;
 
 function loadConfig(){
-  TRELLO_KEY=localStorage.getItem('mq_trello_key');
-  TRELLO_TOKEN=localStorage.getItem('mq_trello_token');
-  const saved=localStorage.getItem('mq_clockify_csv');
-  if(saved){
-    try{
-      const obj=JSON.parse(saved);
-      clockifyHours=obj.hours;
-      showCSVBanner(obj.filename,obj.date);
-    }catch(e){}
-  }
-  return TRELLO_KEY&&TRELLO_TOKEN;
+  TRELLO_KEY = localStorage.getItem('mq_trello_key');
+  TRELLO_TOKEN = localStorage.getItem('mq_trello_token');
+  const saved = localStorage.getItem('mq_clockify_csv');
+  if(saved){ try{ const o=JSON.parse(saved); clockifyHours=o.hours; showCSVBanner(o.filename,o.date); }catch(e){} }
+  return TRELLO_KEY && TRELLO_TOKEN;
 }
 
 function saveAndStart(){
   const k=document.getElementById('input-trello-key').value.trim();
   const t=document.getElementById('input-trello-token').value.trim();
-  if(!k||!t){alert('Por favor rellena los dos campos.');return}
-  localStorage.setItem('mq_trello_key',k);
-  localStorage.setItem('mq_trello_token',t);
-  TRELLO_KEY=k;TRELLO_TOKEN=t;
+  if(!k||!t){alert('Rellena los dos campos.');return}
+  localStorage.setItem('mq_trello_key',k); localStorage.setItem('mq_trello_token',t);
+  TRELLO_KEY=k; TRELLO_TOKEN=t;
   document.getElementById('setup-screen').style.display='none';
   document.getElementById('dashboard-screen').style.display='block';
   loadDashboard();
 }
 
 function resetConfig(){
-  if(!confirm('¿Quieres cambiar las claves de acceso?'))return;
-  localStorage.removeItem('mq_trello_key');
-  localStorage.removeItem('mq_trello_token');
+  if(!confirm('¿Cambiar claves?'))return;
+  localStorage.removeItem('mq_trello_key'); localStorage.removeItem('mq_trello_token');
   location.reload();
 }
 
-function handleCSV(event){
-  const file=event.target.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    parseCSV(e.target.result,file.name);
-    localStorage.setItem('mq_clockify_csv',JSON.stringify({
-      hours:clockifyHours,filename:file.name,date:new Date().toLocaleString('es-ES')
-    }));
-    renderProjects();
-  };
-  reader.readAsText(file,'UTF-8');
+function handleCSV(ev){
+  const f=ev.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{ parseCSV(e.target.result,f.name); localStorage.setItem('mq_clockify_csv',JSON.stringify({hours:clockifyHours,filename:f.name,date:new Date().toLocaleString('es-ES')})); renderProjects(); };
+  r.readAsText(f,'UTF-8');
 }
 
 function parseCSV(text,filename){
   clockifyHours={};
-  const lines=text.split('\n').slice(1);
-  for(const line of lines){
+  for(const line of text.split('\n').slice(1)){
     if(!line.trim())continue;
     const cols=line.match(/(".*?"|[^,]+)(?=,|$)/g);
     if(!cols||cols.length<5)continue;
@@ -256,190 +234,152 @@ function parseCSV(text,filename){
 
 function showCSVBanner(filename,date){
   document.getElementById('csv-banner').style.display='flex';
-  document.getElementById('csv-banner-text').textContent=filename;
-  document.getElementById('csv-banner-date').textContent='Cargado el '+date;
+  document.getElementById('csv-name').textContent=filename;
+  document.getElementById('csv-date').textContent=date;
 }
 
-function setStatus(msg){
-  document.getElementById('projects-container').innerHTML=`<div id="status-msg"><span class="dot"></span>${msg}</div>`;
-}
+function setStatus(msg){ document.getElementById('projects-container').innerHTML=`<div id="status-msg"><span class="dot"></span>${msg}</div>`; }
 
 async function trelloFetch(path){
   const sep=path.includes('?')?'&':'?';
-  const r=await fetch('https://api.trello.com/1'+path+sep+`key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`);
-  return r.json();
+  return (await fetch('https://api.trello.com/1'+path+sep+`key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`)).json();
 }
 
 async function loadDashboard(){
   const btn=document.getElementById('refresh-btn');
-  btn.style.opacity='0.5';btn.style.pointerEvents='none';
+  btn.style.opacity='0.4'; btn.style.pointerEvents='none';
   try{
     setStatus('Conectando con Trello...');
     const boards=await trelloFetch('/members/me/boards?fields=name,id');
     const board=boards.find(b=>norm(b.name).includes('proyectos en produccion'));
-    if(!board)throw new Error('Tablero "Proyectos en Producción" no encontrado');
+    if(!board)throw new Error('Tablero no encontrado');
 
-    const [customFields,cards]=await Promise.all([
+    const [cfs,cards]=await Promise.all([
       trelloFetch(`/boards/${board.id}/customFields`),
-      trelloFetch(`/boards/${board.id}/cards?customFieldItems=true&fields=name,due,customFieldItems,labels`)
+      trelloFetch(`/boards/${board.id}/cards?customFieldItems=true&fields=name,due,customFieldItems`)
     ]);
 
-    const hoursField=customFields.find(f=>/tiempo|horas/i.test(f.name));
-    const idField=customFields.find(f=>/id.?proyecto/i.test(f.name));
-    const priorityField=customFields.find(f=>/prioridad/i.test(f.name));
+    const hoursField=cfs.find(f=>/tiempo|horas/i.test(f.name));
+    const idField=cfs.find(f=>/id.?proyecto/i.test(f.name));
+    const prioField=cfs.find(f=>/prioridad/i.test(f.name));
 
     trelloProjects=[];
     for(const card of cards){
-      const cfItems=card.customFieldItems||[];
-      const idItem=idField?cfItems.find(i=>i.idCustomField===idField.id):null;
-      const hoursItem=hoursField?cfItems.find(i=>i.idCustomField===hoursField.id):null;
-      const priorityItem=priorityField?cfItems.find(i=>i.idCustomField===priorityField.id):null;
-
+      const cf=card.customFieldItems||[];
+      const idItem=idField?cf.find(i=>i.idCustomField===idField.id):null;
+      const hoursItem=hoursField?cf.find(i=>i.idCustomField===hoursField.id):null;
+      const prioItem=prioField?cf.find(i=>i.idCustomField===prioField.id):null;
       const projectId=idItem?.value?.text?.trim()||null;
       if(!projectId)continue;
-
       const assigned=parseInt(hoursItem?.value?.number||0);
-
-      // Prioridad: puede ser campo texto o campo dropdown
       let priority='';
-      if(priorityItem){
-        if(priorityItem.value?.text) priority=priorityItem.value.text;
-        else if(priorityItem.idValue&&priorityField.options){
-          const opt=priorityField.options.find(o=>o.id===priorityItem.idValue);
+      if(prioItem){
+        if(prioItem.value?.text) priority=prioItem.value.text;
+        else if(prioItem.idValue&&prioField.options){
+          const opt=prioField.options.find(o=>o.id===prioItem.idValue);
           if(opt) priority=opt.value?.text||'';
         }
       }
-
       trelloProjects.push({name:card.name,projectId,assigned,due:card.due||null,priority});
     }
-
     renderProjects();
-    const ts='Actualizado '+new Date().toLocaleTimeString('es-ES');
-    document.getElementById('last-update').textContent=ts;
-    document.getElementById('last-update-footer').textContent=ts;
+    const ts=new Date().toLocaleTimeString('es-ES');
+    document.getElementById('last-update').textContent='Act. '+ts;
+    document.getElementById('footer-ts').textContent='Última actualización: '+ts;
   }catch(err){
-    document.getElementById('projects-container').innerHTML=`<div id="status-msg">⚠ Error: ${err.message}</div>`;
-    console.error(err);
+    setStatus('⚠ Error: '+err.message); console.error(err);
   }
-  btn.style.opacity='';btn.style.pointerEvents='';
+  btn.style.opacity=''; btn.style.pointerEvents='';
 }
 
-function priorityHTML(p){
-  const v=norm(p||'');
-  if(v.includes('max')||v.includes('alta')){
-    if(v.includes('max')) return `<span class="priority-pill priority-max">Máxima</span>`;
-    return `<span class="priority-pill priority-alta">Alta</span>`;
-  }
-  if(v.includes('med')) return `<span class="priority-pill priority-media">Media</span>`;
-  if(v.includes('baj')) return `<span class="priority-pill priority-baja">Baja</span>`;
-  return `<span class="priority-pill priority-none">—</span>`;
+function cardClass(p,days){
+  if(p.isCrit) return 'crit';
+  if(p.over>0) return 'over';
+  // warn si faltan ≤7 días y menos del 80% completado
+  const pct=p.assigned>0?p.consumed/p.assigned*100:0;
+  if(days!==null && days<=7 && pct<80) return 'warn';
+  if(p.pct>=70) return 'warn';
+  return 'ok';
+}
+
+function prioLabel(raw){
+  const v=norm(raw||'');
+  if(v.includes('max')) return 'Máxima';
+  if(v.includes('alt')) return 'Alta';
+  if(v.includes('med')) return 'Media';
+  if(v.includes('baj')) return 'Baja';
+  return raw||'—';
 }
 
 function renderProjects(){
-  if(!trelloProjects.length){
-    setStatus('No se encontraron proyectos con "ID Proyecto" relleno en Trello.');
-    return;
-  }
+  if(!trelloProjects.length){ setStatus('Sin proyectos con ID Proyecto en Trello.'); return; }
 
   const enriched=trelloProjects.map(p=>{
     const key=norm(p.projectId);
     const consumed=Math.round(clockifyHours[key]||0);
-    const over=p.assigned>0?consumed-p.assigned:0;
-    const isCritical=over>OVER_THRESHOLD;
-    return{...p,consumed,found:key in clockifyHours,over,isCritical};
+    const over=p.assigned>0?Math.max(0,consumed-p.assigned):0;
+    const isCrit=over>OVER_THRESHOLD;
+    const pct=p.assigned>0?Math.min(Math.round(consumed/p.assigned*100),100):0;
+    return{...p,consumed,found:key in clockifyHours,over,isCrit,pct};
   });
 
-  enriched.sort((a,b)=>{
-    const da=a.due?new Date(a.due):new Date('9999');
-    const db=b.due?new Date(b.due):new Date('9999');
-    return da-db;
-  });
+  enriched.sort((a,b)=>(a.due?new Date(a.due):new Date('9999'))-(b.due?new Date(b.due):new Date('9999')));
 
-  // Stats
-  let totalA=0,totalC=0,countOk=0,countAlert=0;
-  enriched.forEach(p=>{
-    totalA+=p.assigned;totalC+=p.consumed;
-    if(p.assigned>0){
-      if(p.over>OVER_THRESHOLD) countAlert++;
-      else countOk++;
-    }
-  });
-  const gPct=totalA>0?Math.round((totalC/totalA)*100):0;
+  let totalA=0,totalC=0,cntOk=0,cntAlert=0;
+  enriched.forEach(p=>{ totalA+=p.assigned; totalC+=p.consumed; if(p.assigned>0){if(p.over>OVER_THRESHOLD)cntAlert++;else cntOk++;} });
+  const gPct=totalA>0?Math.round(totalC/totalA*100):0;
 
-  document.getElementById('stat-count').textContent=enriched.length;
-  document.getElementById('stat-ok').textContent=countOk;
-  document.getElementById('stat-ok-sub').textContent=`de ${enriched.length} proyectos`;
-  document.getElementById('stat-alert').textContent=countAlert;
-  document.getElementById('stat-alert-sub').textContent=countAlert>0?`>${OVER_THRESHOLD}h de desfase`:'Sin desfases críticos';
-  document.getElementById('stat-pct').innerHTML=`${gPct}<span>%</span>`;
-  document.getElementById('stat-pct-sub').textContent=`${totalC}h de ${totalA}h totales`;
+  document.getElementById('s-total').textContent=enriched.length;
+  document.getElementById('s-ok').textContent=cntOk;
+  document.getElementById('s-ok-sub').textContent='de '+enriched.length+' proyectos';
+  document.getElementById('s-alert').textContent=cntAlert;
+  document.getElementById('s-alert-sub').textContent=cntAlert>0?'más de '+OVER_THRESHOLD+'h de desfase':'Sin desfases críticos';
+  document.getElementById('s-pct').innerHTML=`${gPct}<span style="font-size:16px;font-family:var(--font)">%</span>`;
+  document.getElementById('s-pct-sub').textContent=totalC+'h de '+totalA+'h totales';
 
-  const scAlert=document.getElementById('sc-alert');
-  const scOk=document.getElementById('sc-ok');
-  scAlert.className='stat-card'+(countAlert>0?' alert':'');
-  scOk.className='stat-card'+(countOk>0?' good':'');
+  const sc1=document.getElementById('sc1'); sc1.className='scard '+(cntOk>0?'ok':'neutral');
+  const sc2=document.getElementById('sc2'); sc2.className='scard '+(cntAlert>0?'danger':'ok');
+  const sc3=document.getElementById('sc3'); sc3.className='scard '+(gPct>100?'danger':gPct>80?'warn':'neutral');
 
-  let html='<div class="projects-grid">';
+  let html='<div class="projects">';
   for(const p of enriched){
-    const pct=p.assigned>0?Math.min(Math.round((p.consumed/p.assigned)*100),100):0;
-    const over=p.over;
-    const isCritical=p.isCritical;
-    const cls=isCritical?'critical':over>0?'danger':pct>=70?'warning':'ok';
-
-    // Colores barra
-    const barColor=isCritical?'var(--red)':over>0?'var(--red)':pct>=70?'var(--amber)':'var(--green)';
-
-    // Etiqueta de estado
-    let badgeHtml;
-    if(!p.found) badgeHtml=`<span class="badge badge-gray">sin CSV</span>`;
-    else if(p.assigned===0) badgeHtml=`<span class="badge badge-gray">sin horas</span>`;
-    else if(isCritical) badgeHtml=`<span class="badge badge-danger">⚠ +${over}h</span>`;
-    else if(over>0) badgeHtml=`<span class="badge badge-danger">+${over}h</span>`;
-    else if(pct>=70) badgeHtml=`<span class="badge badge-warning">${pct}%</span>`;
-    else badgeHtml=`<span class="badge badge-ok">${pct}%</span>`;
-
-    // Fecha
     const days=daysUntil(p.due);
-    const dateStr=formatDate(p.due);
-    let dateCls='normal';
-    if(days!==null){
-      if(days<=2) dateCls='urgent';
-      else if(days<=7) dateCls='soon';
-    }
-    let daysHtml='';
-    if(days!==null){
-      const dt=days===0?'hoy':days<0?`hace ${Math.abs(days)}d`:`en ${days}d`;
-      daysHtml=`<div class="deadline-days ${dateCls}">${dt}</div>`;
-    }
+    const cls=cardClass(p,days);
+    const dateStr=fmtDate(p.due);
+    const dt=days===null?'':days===0?'hoy':days<0?`hace ${Math.abs(days)}d`:`en ${days}d`;
 
-    // Línea de progreso con indicador de desfase
-    let progressHtml='';
-    if(p.assigned>0){
-      const rightLabel=over>0
-        ?`<span class="over">+${over}h sobre presupuesto</span>`
-        :`${Math.max(0,p.assigned-p.consumed)}h restantes de ${p.assigned}h`;
-      progressHtml=`
-        <div class="progress-track"><div class="progress-fill" style="width:${pct}%;background:${barColor};"></div></div>
-        <div class="progress-labels"><span>${p.consumed}h consumidas</span>${rightLabel}</div>
-        ${isCritical?`<div class="critical-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Desfase crítico: +${over}h</div>`:''}
-      `;
-    }else{
-      progressHtml=`<span class="no-hours">Sin horas asignadas en Trello</span>`;
-    }
+    let statusText;
+    if(!p.found) statusText='sin datos';
+    else if(p.assigned===0) statusText='sin horas';
+    else if(p.isCrit) statusText=`⚠ +${p.over}h`;
+    else if(p.over>0) statusText=`+${p.over}h`;
+    else statusText=`${p.pct}%`;
+
+    let barRight;
+    if(p.over>0) barRight=`<span>+${p.over}h sobre presupuesto</span>`;
+    else if(p.assigned>0) barRight=`<span>${Math.max(0,p.assigned-p.consumed)}h restantes de ${p.assigned}h</span>`;
+    else barRight=`<span>—</span>`;
 
     html+=`
-      <div class="project-row ${cls}">
-        <div>
-          <div class="project-name" title="${p.name}">${p.name}</div>
-          <div class="project-id">${p.projectId}</div>
+    <div class="pcard ${cls}">
+      <div>
+        <div class="pname">${p.name}</div>
+        <div class="pid">${p.projectId}</div>
+      </div>
+      <div class="bar-wrap">
+        <div class="bar-labels">
+          <span>${p.consumed}h consumidas</span>
+          ${barRight}
         </div>
-        <div class="progress-wrap">${progressHtml}</div>
-        <div style="text-align:right">${badgeHtml}</div>
-        <div style="text-align:center">${priorityHTML(p.priority)}</div>
-        <div class="deadline-block">
-          ${dateStr?`<div class="deadline-date ${dateCls}">${dateStr}</div>${daysHtml}`:'<div class="deadline-days">Sin fecha</div>'}
-        </div>
-      </div>`;
+        <div class="bar-track"><div class="bar-fill" style="width:${p.pct}%"></div></div>
+        ${p.isCrit?`<div class="bar-over"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Desfase crítico: +${p.over}h sobre el presupuesto</div>`:''}
+      </div>
+      <div class="pstatus"><span class="spill">${statusText}</span></div>
+      <div style="text-align:center"><span class="ptag">${prioLabel(p.priority)}</span></div>
+      <div class="pdate">
+        ${dateStr?`<div class="pdate-val">${dateStr}</div><div class="pdate-days">${dt}</div>`:'<div class="pdate-days">Sin fecha</div>'}
+      </div>
+    </div>`;
   }
   html+='</div>';
   document.getElementById('projects-container').innerHTML=html;
