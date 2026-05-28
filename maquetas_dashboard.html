@@ -4,84 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maquetas.tech — Producción</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f5f4f1; --surface: #ffffff; --surface2: #f0eeea; --border: #e0ddd8;
-    --text: #1a1a18; --text2: #6b6b66; --text3: #a0a09a;
-    --accent: #c4922a; --green: #2d8f5e; --amber: #c47a1a; --red: #c43030;
-    --green-bg: rgba(45,143,94,0.08); --amber-bg: rgba(196,122,26,0.08); --red-bg: rgba(196,48,48,0.08);
-    --font: 'DM Sans', sans-serif; --mono: 'DM Mono', monospace;
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#f5f4f1;--surface:#fff;--surface2:#f0eeea;--border:#e0ddd8;
+    --text:#1a1a18;--text2:#6b6b66;--text3:#a0a09a;
+    --accent:#c4922a;--green:#2d8f5e;--amber:#c47a1a;--red:#c43030;
+    --green-bg:rgba(45,143,94,0.08);--amber-bg:rgba(196,122,26,0.08);--red-bg:rgba(196,48,48,0.08);
+    --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
   }
-  body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; min-height: 100vh; padding: 32px; }
+  body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;min-height:100vh;padding:32px}
 
-  #setup-screen { display: none; max-width: 480px; margin: 80px auto; }
-  #setup-screen h1 { font-size: 22px; font-weight: 400; margin-bottom: 6px; letter-spacing: -0.02em; color: var(--text); }
-  #setup-screen p { font-size: 13px; color: var(--text2); margin-bottom: 32px; line-height: 1.6; }
-  .field { margin-bottom: 16px; }
-  .field label { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
-  .field input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; color: var(--text); font-family: var(--mono); font-size: 12px; outline: none; }
-  .field input:focus { border-color: var(--accent); }
-  .setup-btn { width: 100%; padding: 12px; background: var(--accent); border: none; border-radius: 6px; color: #fff; font-family: var(--font); font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; }
-  .setup-btn:hover { opacity: 0.9; }
-  .setup-note { font-size: 11px; color: var(--text3); margin-top: 12px; text-align: center; line-height: 1.6; }
+  #setup-screen{display:none;max-width:480px;margin:80px auto}
+  #setup-screen h1{font-size:22px;font-weight:400;margin-bottom:6px;letter-spacing:-0.02em}
+  #setup-screen p{font-size:13px;color:var(--text2);margin-bottom:32px;line-height:1.6}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+  .field input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--mono);font-size:12px;outline:none}
+  .field input:focus{border-color:var(--accent)}
+  .setup-btn{width:100%;padding:12px;background:var(--accent);border:none;border-radius:6px;color:#fff;font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;margin-top:8px}
+  .setup-note{font-size:11px;color:var(--text3);margin-top:12px;text-align:center;line-height:1.6}
 
-  #dashboard-screen { display: none; }
-  header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-  .logo-area h1 { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-  .logo-area p { font-size: 22px; font-weight: 300; color: var(--text); letter-spacing: -0.02em; }
-  .header-right { display: flex; align-items: center; gap: 16px; }
-  #last-update { font-size: 11px; color: var(--text3); font-family: var(--mono); }
-  .refresh-btn { background: none; border: 1px solid var(--border); color: var(--text2); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: var(--font); font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 0.15s; }
-  .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .refresh-btn.loading { opacity: 0.5; pointer-events: none; }
-  .reset-btn { background: none; border: none; color: var(--text3); font-size: 11px; cursor: pointer; font-family: var(--font); padding: 4px; }
-  .reset-btn:hover { color: var(--red); }
+  #dashboard-screen{display:none}
+  header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  .logo-area h1{font-size:11px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .logo-area p{font-size:22px;font-weight:300;color:var(--text);letter-spacing:-0.02em}
+  .header-right{display:flex;align-items:center;gap:16px}
+  #last-update{font-size:11px;color:var(--text3);font-family:var(--mono)}
+  .refresh-btn{background:none;border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.15s}
+  .refresh-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .upload-btn{background:var(--accent);border:none;color:#fff;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:var(--font);font-size:13px;display:flex;align-items:center;gap:6px}
+  .upload-btn:hover{opacity:0.9}
+  .reset-btn{background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:var(--font);padding:4px}
+  .reset-btn:hover{color:var(--red)}
+  #csv-input{display:none}
 
-  .summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-  .stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
-  .stat-value { font-size: 28px; font-weight: 300; color: var(--text); letter-spacing: -0.02em; font-family: var(--mono); }
-  .stat-value span { font-size: 14px; color: var(--text2); font-family: var(--font); margin-left: 4px; }
+  .csv-banner{background:var(--amber-bg);border:1px solid var(--amber);border-radius:8px;padding:12px 16px;margin-bottom:24px;font-size:13px;color:var(--amber);display:flex;align-items:center;gap:10px}
+  .csv-date{font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:2px}
 
-  .table-header { display: grid; grid-template-columns: 240px 1fr 160px 140px; gap: 24px; padding: 0 24px 10px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); }
-  .table-header .th-right { text-align: right; }
+  .summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px}
+  .stat-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+  .stat-value{font-size:28px;font-weight:300;color:var(--text);letter-spacing:-0.02em;font-family:var(--mono)}
+  .stat-value span{font-size:14px;color:var(--text2);font-family:var(--font);margin-left:4px}
 
-  .projects-grid { display: flex; flex-direction: column; gap: 8px; }
-  .project-row { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 24px; display: grid; grid-template-columns: 240px 1fr 160px 140px; align-items: center; gap: 24px; transition: border-color 0.15s, box-shadow 0.15s; }
-  .project-row:hover { border-color: #c8c5be; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  .project-row.danger { border-left: 3px solid var(--red); }
-  .project-row.warning { border-left: 3px solid var(--amber); }
-  .project-row.ok { border-left: 3px solid var(--green); }
-  .project-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .project-id { font-size: 11px; color: var(--text3); font-family: var(--mono); }
-  .progress-track { height: 5px; background: var(--surface2); border-radius: 3px; margin-bottom: 6px; overflow: hidden; }
-  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
-  .progress-labels { display: flex; justify-content: space-between; font-size: 11px; font-family: var(--mono); color: var(--text3); }
-  .deadline-block { text-align: right; }
-  .deadline-date { font-size: 13px; font-family: var(--mono); color: var(--text2); margin-bottom: 2px; }
-  .deadline-days { font-size: 11px; color: var(--text3); }
-  .deadline-days.urgent { color: var(--red); font-weight: 500; }
-  .deadline-days.soon { color: var(--amber); font-weight: 500; }
-  .badge { font-size: 11px; font-family: var(--mono); padding: 4px 10px; border-radius: 4px; display: inline-block; text-align: center; white-space: nowrap; }
-  .badge-ok { background: var(--green-bg); color: var(--green); }
-  .badge-warning { background: var(--amber-bg); color: var(--amber); }
-  .badge-danger { background: var(--red-bg); color: var(--red); }
-  .badge-gray { background: var(--surface2); color: var(--text3); }
-  .no-hours { color: var(--text3); font-size: 12px; }
+  .table-header{display:grid;grid-template-columns:240px 1fr 160px 140px;gap:24px;padding:0 24px 10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)}
+  .th-right{text-align:right}
 
-  #status-msg { text-align: center; padding: 60px 20px; color: var(--text3); font-size: 14px; }
-  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; animation: pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .projects-grid{display:flex;flex-direction:column;gap:8px}
+  .project-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 24px;display:grid;grid-template-columns:240px 1fr 160px 140px;align-items:center;gap:24px;transition:border-color 0.15s,box-shadow 0.15s}
+  .project-row:hover{border-color:#c8c5be;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+  .project-row.danger{border-left:3px solid var(--red)}
+  .project-row.warning{border-left:3px solid var(--amber)}
+  .project-row.ok{border-left:3px solid var(--green)}
+  .project-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .project-id{font-size:11px;color:var(--text3);font-family:var(--mono)}
+  .progress-track{height:5px;background:var(--surface2);border-radius:3px;margin-bottom:6px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:3px;transition:width 0.8s cubic-bezier(0.4,0,0.2,1)}
+  .progress-labels{display:flex;justify-content:space-between;font-size:11px;font-family:var(--mono);color:var(--text3)}
+  .deadline-block{text-align:right}
+  .deadline-date{font-size:13px;font-family:var(--mono);color:var(--text2);margin-bottom:2px}
+  .deadline-days{font-size:11px;color:var(--text3)}
+  .deadline-days.urgent{color:var(--red);font-weight:500}
+  .deadline-days.soon{color:var(--amber);font-weight:500}
+  .badge{font-size:11px;font-family:var(--mono);padding:4px 10px;border-radius:4px;display:inline-block;text-align:center;white-space:nowrap}
+  .badge-ok{background:var(--green-bg);color:var(--green)}
+  .badge-warning{background:var(--amber-bg);color:var(--amber)}
+  .badge-danger{background:var(--red-bg);color:var(--red)}
+  .badge-gray{background:var(--surface2);color:var(--text3)}
+  .no-hours{color:var(--text3);font-size:12px}
 
-  @media (max-width: 900px) {
-    body { padding: 16px; }
-    .summary-row { grid-template-columns: repeat(2,1fr); }
-    .project-row { grid-template-columns: 1fr; gap: 12px; }
-    .table-header { display: none; }
-    .deadline-block { text-align: left; }
+  #status-msg{text-align:center;padding:60px 20px;color:var(--text3);font-size:14px}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  @media(max-width:900px){
+    body{padding:16px}
+    .summary-row{grid-template-columns:repeat(2,1fr)}
+    .project-row{grid-template-columns:1fr;gap:12px}
+    .table-header{display:none}
+    .deadline-block{text-align:left}
   }
 </style>
 </head>
@@ -92,9 +95,8 @@
   <p>Introduce las claves de acceso. Se guardarán en este navegador y no tendrás que volver a introducirlas.</p>
   <div class="field"><label>Trello API Key</label><input type="password" id="input-trello-key" autocomplete="off"></div>
   <div class="field"><label>Trello Token</label><input type="password" id="input-trello-token" autocomplete="off"></div>
-  <div class="field"><label>Clockify API Key</label><input type="password" id="input-clockify-key" autocomplete="off"></div>
   <button class="setup-btn" onclick="saveAndStart()">Guardar y abrir dashboard</button>
-  <p class="setup-note">Las claves se guardan solo en este dispositivo.<br>Nunca se envían a ningún servidor externo excepto Trello y Clockify.</p>
+  <p class="setup-note">Las claves se guardan solo en este dispositivo.</p>
 </div>
 
 <div id="dashboard-screen">
@@ -106,12 +108,25 @@
     <div class="header-right">
       <span id="last-update"></span>
       <button class="reset-btn" onclick="resetConfig()">Cambiar claves</button>
+      <label class="upload-btn" for="csv-input">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Subir CSV Clockify
+      </label>
+      <input type="file" id="csv-input" accept=".csv" onchange="handleCSV(event)">
       <button class="refresh-btn" onclick="loadDashboard()" id="refresh-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
-        Actualizar
+        Actualizar Trello
       </button>
     </div>
   </header>
+
+  <div id="csv-banner" style="display:none" class="csv-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div>
+      <div id="csv-banner-text">CSV cargado</div>
+      <div class="csv-date" id="csv-banner-date"></div>
+    </div>
+  </div>
 
   <div class="summary-row">
     <div class="stat-card"><p class="stat-label">Proyectos activos</p><p class="stat-value" id="stat-count">—</p></div>
@@ -126,207 +141,222 @@
   </div>
 
   <div id="projects-container">
-    <div id="status-msg"><span class="dot"></span>Cargando datos...</div>
+    <div id="status-msg"><span class="dot"></span>Cargando datos de Trello...</div>
   </div>
-  <p style="font-size:11px; color:var(--text3); text-align:right; margin-top:12px;" id="last-update-footer"></p>
+  <p style="font-size:11px;color:var(--text3);text-align:right;margin-top:12px" id="last-update-footer"></p>
 </div>
 
 <script>
-let TRELLO_KEY, TRELLO_TOKEN, CLOCKIFY_KEY;
+let TRELLO_KEY, TRELLO_TOKEN;
+let clockifyHours = {}; // { 'nombre proyecto normalizado': horas }
+let trelloProjects = [];
 
-function loadConfig() {
-  TRELLO_KEY = localStorage.getItem('mq_trello_key');
-  TRELLO_TOKEN = localStorage.getItem('mq_trello_token');
-  CLOCKIFY_KEY = localStorage.getItem('mq_clockify_key');
-  return TRELLO_KEY && TRELLO_TOKEN && CLOCKIFY_KEY;
+function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim() }
+function daysUntil(d){ return d?Math.ceil((new Date(d)-new Date())/86400000):null }
+function formatDate(d){ return d?new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'}):null }
+function getColor(p){ return p>=90?'var(--red)':p>=70?'var(--amber)':'var(--green)' }
+
+function loadConfig(){
+  TRELLO_KEY=localStorage.getItem('mq_trello_key');
+  TRELLO_TOKEN=localStorage.getItem('mq_trello_token');
+  // Recuperar CSV guardado
+  const saved = localStorage.getItem('mq_clockify_csv');
+  if(saved){
+    try{
+      const obj = JSON.parse(saved);
+      clockifyHours = obj.hours;
+      showCSVBanner(obj.filename, obj.date);
+    }catch(e){}
+  }
+  return TRELLO_KEY && TRELLO_TOKEN;
 }
 
-function saveAndStart() {
-  const k = document.getElementById('input-trello-key').value.trim();
-  const t = document.getElementById('input-trello-token').value.trim();
-  const c = document.getElementById('input-clockify-key').value.trim();
-  if (!k || !t || !c) { alert('Por favor rellena los tres campos.'); return; }
-  localStorage.setItem('mq_trello_key', k);
-  localStorage.setItem('mq_trello_token', t);
-  localStorage.setItem('mq_clockify_key', c);
-  TRELLO_KEY = k; TRELLO_TOKEN = t; CLOCKIFY_KEY = c;
-  document.getElementById('setup-screen').style.display = 'none';
-  document.getElementById('dashboard-screen').style.display = 'block';
+function saveAndStart(){
+  const k=document.getElementById('input-trello-key').value.trim();
+  const t=document.getElementById('input-trello-token').value.trim();
+  if(!k||!t){alert('Por favor rellena los dos campos.');return}
+  localStorage.setItem('mq_trello_key',k);
+  localStorage.setItem('mq_trello_token',t);
+  TRELLO_KEY=k; TRELLO_TOKEN=t;
+  document.getElementById('setup-screen').style.display='none';
+  document.getElementById('dashboard-screen').style.display='block';
   loadDashboard();
 }
 
-function resetConfig() {
-  if (!confirm('¿Quieres cambiar las claves de acceso?')) return;
+function resetConfig(){
+  if(!confirm('¿Quieres cambiar las claves de acceso?'))return;
   localStorage.removeItem('mq_trello_key');
   localStorage.removeItem('mq_trello_token');
-  localStorage.removeItem('mq_clockify_key');
   location.reload();
 }
 
-function setStatus(msg) {
-  document.getElementById('projects-container').innerHTML = `<div id="status-msg"><span class="dot"></span>${msg}</div>`;
+function handleCSV(event){
+  const file = event.target.files[0];
+  if(!file)return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const text = e.target.result;
+    parseCSV(text, file.name);
+    // Guardar en localStorage
+    localStorage.setItem('mq_clockify_csv', JSON.stringify({
+      hours: clockifyHours,
+      filename: file.name,
+      date: new Date().toLocaleString('es-ES')
+    }));
+    renderProjects();
+  };
+  reader.readAsText(file, 'UTF-8');
 }
 
-function normalize(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
-function daysUntil(d) { return d ? Math.ceil((new Date(d) - new Date()) / 86400000) : null; }
-function formatDate(d) { return d ? new Date(d).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: '2-digit' }) : null; }
-function getColor(p) { return p >= 90 ? 'var(--red)' : p >= 70 ? 'var(--amber)' : 'var(--green)'; }
+function parseCSV(text, filename){
+  // Formato: "Project","Client","Date","Time (h)","Time (decimal)","Amount (EUR)"
+  clockifyHours = {};
+  const lines = text.split('\n').slice(1); // saltar cabecera
+  for(const line of lines){
+    if(!line.trim())continue;
+    const cols = line.match(/(".*?"|[^,]+)(?=,|$)/g);
+    if(!cols || cols.length < 5)continue;
+    const project = cols[0].replace(/"/g,'').trim();
+    const decimal = parseFloat(cols[4].replace(/"/g,'').trim());
+    if(!project || isNaN(decimal))continue;
+    const key = norm(project);
+    clockifyHours[key] = (clockifyHours[key]||0) + decimal;
+  }
+  showCSVBanner(filename, new Date().toLocaleString('es-ES'));
+}
 
-async function clockifyFetch(path) {
-  const r = await fetch('https://api.clockify.me/api/v1' + path, { headers: { 'X-Api-Key': CLOCKIFY_KEY } });
+function showCSVBanner(filename, date){
+  document.getElementById('csv-banner').style.display='flex';
+  document.getElementById('csv-banner-text').textContent = '✓ '+filename;
+  document.getElementById('csv-banner-date').textContent = 'Cargado el '+date;
+}
+
+function setStatus(msg){
+  document.getElementById('projects-container').innerHTML=`<div id="status-msg"><span class="dot"></span>${msg}</div>`;
+}
+
+async function trelloFetch(path){
+  const sep=path.includes('?')?'&':'?';
+  const r=await fetch('https://api.trello.com/1'+path+sep+`key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`);
   return r.json();
 }
-async function trelloFetch(path) {
-  const sep = path.includes('?') ? '&' : '?';
-  const r = await fetch('https://api.trello.com/1' + path + sep + `key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`);
-  return r.json();
-}
 
-async function getHoursForProject(wsId, projectId) {
-  if (!projectId) return 0;
-  try {
-    // Usar time-entries en lugar de reports (funciona en plan gratuito)
-    let page = 1, total = 0;
-    while (true) {
-      const entries = await clockifyFetch(`/workspaces/${wsId}/time-entries?project=${projectId}&page-size=200&page=${page}`);
-      if (!Array.isArray(entries) || entries.length === 0) break;
-      for (const e of entries) {
-        if (e.timeInterval && e.timeInterval.duration) {
-          const match = e.timeInterval.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-          if (match) {
-            total += (parseInt(match[1]||0) * 3600) + (parseInt(match[2]||0) * 60) + parseInt(match[3]||0);
-          }
-        }
-      }
-      if (entries.length < 200) break;
-      page++;
-    }
-    return Math.round(total / 3600);
-  } catch(e) { return 0; }
-}
-
-async function loadDashboard() {
-  const btn = document.getElementById('refresh-btn');
-  btn.classList.add('loading');
-  try {
+async function loadDashboard(){
+  const btn=document.getElementById('refresh-btn');
+  btn.style.opacity='0.5';btn.style.pointerEvents='none';
+  try{
     setStatus('Conectando con Trello...');
-    const boards = await trelloFetch('/members/me/boards?fields=name,id');
-    const board = boards.find(b => normalize(b.name).includes('proyectos en produccion'));
-    if (!board) throw new Error('Tablero "Proyectos en Producción" no encontrado');
+    const boards=await trelloFetch('/members/me/boards?fields=name,id');
+    const board=boards.find(b=>norm(b.name).includes('proyectos en produccion'));
+    if(!board)throw new Error('Tablero "Proyectos en Producción" no encontrado');
 
-    const [customFields, cards] = await Promise.all([
+    const [customFields,cards]=await Promise.all([
       trelloFetch(`/boards/${board.id}/customFields`),
       trelloFetch(`/boards/${board.id}/cards?customFieldItems=true&fields=name,due,customFieldItems`)
     ]);
 
-    const hoursField = customFields.find(f => /tiempo|horas/i.test(f.name));
-    const idField = customFields.find(f => /id.?proyecto/i.test(f.name));
+    const hoursField=customFields.find(f=>/tiempo|horas/i.test(f.name));
+    const idField=customFields.find(f=>/id.?proyecto/i.test(f.name));
 
-    const projects = [];
-    for (const card of cards) {
-      const cfItems = card.customFieldItems || [];
-      const idItem = idField ? cfItems.find(i => i.idCustomField === idField.id) : null;
-      const hoursItem = hoursField ? cfItems.find(i => i.idCustomField === hoursField.id) : null;
-      const projectId = idItem?.value?.text?.trim() || null;
-      if (!projectId) continue;
-      const assigned = parseInt(hoursItem?.value?.number || 0);
-      projects.push({ name: card.name, projectId, assigned, due: card.due || null });
+    trelloProjects=[];
+    for(const card of cards){
+      const cfItems=card.customFieldItems||[];
+      const idItem=idField?cfItems.find(i=>i.idCustomField===idField.id):null;
+      const hoursItem=hoursField?cfItems.find(i=>i.idCustomField===hoursField.id):null;
+      const projectId=idItem?.value?.text?.trim()||null;
+      if(!projectId)continue;
+      const assigned=parseInt(hoursItem?.value?.number||0);
+      trelloProjects.push({name:card.name,projectId,assigned,due:card.due||null});
     }
 
-    setStatus('Conectando con Clockify...');
-    const workspaces = await clockifyFetch('/workspaces');
-    const ws = workspaces.find(w => /maquetas/i.test(w.name)) || workspaces[0];
-    if (!ws) throw new Error('Workspace de Clockify no encontrado');
+    renderProjects();
 
-    // Cargar todos los proyectos (activos y archivados)
-    const [activeList, archivedList] = await Promise.all([
-      clockifyFetch(`/workspaces/${ws.id}/projects?archived=false&page-size=200`),
-      clockifyFetch(`/workspaces/${ws.id}/projects?archived=true&page-size=200`)
-    ]);
-    const allProjects = [...(Array.isArray(activeList) ? activeList : []), ...(Array.isArray(archivedList) ? archivedList : [])];
-    const cpMap = {};
-    allProjects.forEach(p => { cpMap[normalize(p.name)] = p.id; });
-
-    setStatus('Calculando horas consumidas...');
-    const enriched = await Promise.all(projects.map(async p => {
-      const key = normalize(p.projectId);
-      const cpId = cpMap[key] || null;
-      const consumed = await getHoursForProject(ws.id, cpId);
-      return { ...p, consumed, found: !!cpId };
-    }));
-
-    enriched.sort((a, b) => {
-      const da = a.due ? new Date(a.due) : new Date('9999');
-      const db = b.due ? new Date(b.due) : new Date('9999');
-      return da - db;
-    });
-
-    let totalA = 0, totalC = 0;
-    enriched.forEach(p => { totalA += p.assigned; totalC += p.consumed; });
-    document.getElementById('stat-count').textContent = enriched.length;
-    document.getElementById('stat-assigned').innerHTML = `${totalA}<span>h</span>`;
-    document.getElementById('stat-consumed').innerHTML = `${totalC}<span>h</span>`;
-    const globalPct = totalA > 0 ? Math.round((totalC / totalA) * 100) : 0;
-    document.getElementById('stat-pct').innerHTML = `${globalPct}<span>%</span>`;
-
-    let html = '<div class="projects-grid">';
-    for (const p of enriched) {
-      const pct = p.assigned > 0 ? Math.min(Math.round((p.consumed / p.assigned) * 100), 100) : 0;
-      const cls = pct >= 90 ? 'danger' : pct >= 70 ? 'warning' : 'ok';
-      const color = getColor(pct);
-      const days = daysUntil(p.due);
-      const dateStr = formatDate(p.due);
-      let daysHtml = '';
-      if (days !== null) {
-        const dc = days <= 2 ? 'urgent' : days <= 7 ? 'soon' : '';
-        const dt = days === 0 ? 'hoy' : days < 0 ? `hace ${Math.abs(days)}d` : `en ${days}d`;
-        daysHtml = `<div class="deadline-days ${dc}">${dt}</div>`;
-      }
-      const badgeHtml = !p.found
-        ? `<span class="badge badge-gray">sin sync</span>`
-        : p.assigned === 0
-          ? `<span class="badge badge-gray">sin horas</span>`
-          : pct >= 90
-            ? `<span class="badge badge-danger">${pct}% consumido</span>`
-            : pct >= 70
-              ? `<span class="badge badge-warning">${pct}% consumido</span>`
-              : `<span class="badge badge-ok">${pct}% consumido</span>`;
-
-      html += `
-        <div class="project-row ${cls}">
-          <div>
-            <div class="project-name" title="${p.name}">${p.name}</div>
-            <div class="project-id">${p.projectId}</div>
-          </div>
-          <div>
-            ${p.assigned > 0 ? `
-            <div class="progress-track"><div class="progress-fill" style="width:${pct}%; background:${color};"></div></div>
-            <div class="progress-labels"><span>${p.consumed}h consumidas</span><span>${p.assigned - p.consumed >= 0 ? p.assigned - p.consumed : 0}h restantes de ${p.assigned}h</span></div>
-            ` : `<span class="no-hours">Sin horas asignadas en Trello</span>`}
-          </div>
-          <div style="text-align:right;">${badgeHtml}</div>
-          <div class="deadline-block">
-            ${dateStr ? `<div class="deadline-date">${dateStr}</div>${daysHtml}` : '<div class="deadline-days">Sin fecha</div>'}
-          </div>
-        </div>`;
-    }
-    html += '</div>';
-    document.getElementById('projects-container').innerHTML = html;
-    const ts = 'Actualizado ' + new Date().toLocaleTimeString('es-ES');
-    document.getElementById('last-update').textContent = ts;
-    document.getElementById('last-update-footer').textContent = ts;
-  } catch(err) {
-    document.getElementById('projects-container').innerHTML = `<div id="status-msg">⚠ Error: ${err.message}</div>`;
+    const ts='Actualizado '+new Date().toLocaleTimeString('es-ES');
+    document.getElementById('last-update').textContent=ts;
+    document.getElementById('last-update-footer').textContent=ts;
+  }catch(err){
+    document.getElementById('projects-container').innerHTML=`<div id="status-msg">⚠ Error: ${err.message}</div>`;
     console.error(err);
   }
-  btn.classList.remove('loading');
+  btn.style.opacity='';btn.style.pointerEvents='';
 }
 
-if (loadConfig()) {
-  document.getElementById('dashboard-screen').style.display = 'block';
+function renderProjects(){
+  if(!trelloProjects.length){
+    setStatus('No se encontraron proyectos con "ID Proyecto" relleno en Trello.');
+    return;
+  }
+
+  const enriched = trelloProjects.map(p=>{
+    const key=norm(p.projectId);
+    const consumed=Math.round(clockifyHours[key]||0);
+    return {...p,consumed,found:key in clockifyHours};
+  });
+
+  enriched.sort((a,b)=>{
+    const da=a.due?new Date(a.due):new Date('9999');
+    const db=b.due?new Date(b.due):new Date('9999');
+    return da-db;
+  });
+
+  let totalA=0,totalC=0;
+  enriched.forEach(p=>{totalA+=p.assigned;totalC+=p.consumed});
+  document.getElementById('stat-count').textContent=enriched.length;
+  document.getElementById('stat-assigned').innerHTML=`${totalA}<span>h</span>`;
+  document.getElementById('stat-consumed').innerHTML=`${totalC}<span>h</span>`;
+  const gPct=totalA>0?Math.round((totalC/totalA)*100):0;
+  document.getElementById('stat-pct').innerHTML=`${gPct}<span>%</span>`;
+
+  let html='<div class="projects-grid">';
+  for(const p of enriched){
+    const pct=p.assigned>0?Math.min(Math.round((p.consumed/p.assigned)*100),100):0;
+    const cls=pct>=90?'danger':pct>=70?'warning':'ok';
+    const color=getColor(pct);
+    const days=daysUntil(p.due);
+    const dateStr=formatDate(p.due);
+    let daysHtml='';
+    if(days!==null){
+      const dc=days<=2?'urgent':days<=7?'soon':'';
+      const dt=days===0?'hoy':days<0?`hace ${Math.abs(days)}d`:`en ${days}d`;
+      daysHtml=`<div class="deadline-days ${dc}">${dt}</div>`;
+    }
+    const badgeHtml=!p.found
+      ?`<span class="badge badge-gray">sin CSV</span>`
+      :p.assigned===0
+        ?`<span class="badge badge-gray">sin horas</span>`
+        :pct>=90
+          ?`<span class="badge badge-danger">${pct}% consumido</span>`
+          :pct>=70
+            ?`<span class="badge badge-warning">${pct}% consumido</span>`
+            :`<span class="badge badge-ok">${pct}% consumido</span>`;
+
+    html+=`
+      <div class="project-row ${cls}">
+        <div>
+          <div class="project-name" title="${p.name}">${p.name}</div>
+          <div class="project-id">${p.projectId}</div>
+        </div>
+        <div>
+          ${p.assigned>0?`
+          <div class="progress-track"><div class="progress-fill" style="width:${pct}%;background:${color};"></div></div>
+          <div class="progress-labels"><span>${p.consumed}h consumidas</span><span>${Math.max(0,p.assigned-p.consumed)}h restantes de ${p.assigned}h</span></div>
+          `:`<span class="no-hours">Sin horas asignadas en Trello</span>`}
+        </div>
+        <div style="text-align:right">${badgeHtml}</div>
+        <div class="deadline-block">
+          ${dateStr?`<div class="deadline-date">${dateStr}</div>${daysHtml}`:'<div class="deadline-days">Sin fecha</div>'}
+        </div>
+      </div>`;
+  }
+  html+='</div>';
+  document.getElementById('projects-container').innerHTML=html;
+}
+
+if(loadConfig()){
+  document.getElementById('dashboard-screen').style.display='block';
   loadDashboard();
-} else {
-  document.getElementById('setup-screen').style.display = 'block';
+}else{
+  document.getElementById('setup-screen').style.display='block';
 }
 </script>
 </body>
