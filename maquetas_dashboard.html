@@ -4,24 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maquetas.tech — Producción</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#eeecea;
-  --surface:#fff;
-  --font:'DM Sans',sans-serif;
-  --mono:'DM Mono',monospace;
-  --ok:#1a7a4a;       --ok-light:#e6f5ed;  --ok-border:#9dd4b4; --ok-pill:#d0edd9;
-  --warn:#9a5500;     --warn-light:#fff3e0;--warn-border:#f5cc7a;--warn-pill:#fde8b0;
-  --red:#a81818;      --red-light:#fdeaea; --red-border:#f0a0a0; --red-pill:#fad0d0;
-  --crit:#7a0000;     --crit-light:#f5d0d0;--crit-border:#d06060;--crit-pill:#f0b0b0;
-  --n:#4a4a46;        --n-light:#f5f4f1;   --n-border:#dddbd6;
-  --text:#1a1a18;     --text2:#555;        --text3:#999;
+  --bg:#eeecea;--surface:#fff;
+  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+  --ok:#1a7a4a;--ok-light:#e6f5ed;--ok-border:#9dd4b4;--ok-pill:#d0edd9;
+  --warn:#9a5500;--warn-light:#fff3e0;--warn-border:#f5cc7a;--warn-pill:#fde8b0;
+  --red:#a81818;--red-light:#fdeaea;--red-border:#f0a0a0;--red-pill:#fad0d0;
+  --crit:#7a0000;--crit-light:#f5d0d0;--crit-border:#d06060;--crit-pill:#f0b0b0;
+  --n:#4a4a46;--n-light:#f5f4f1;--n-border:#dddbd6;
+  --text:#1a1a18;--text2:#555;--text3:#999;
 }
 body{background:var(--bg);font-family:var(--font);font-size:15px;min-height:100vh;padding:18px 26px;color:var(--text)}
 
-/* SETUP */
 #setup-screen{display:none;max-width:440px;margin:60px auto;background:var(--surface);border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
 #setup-screen h1{font-size:18px;font-weight:500;margin-bottom:6px}
 #setup-screen p{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6}
@@ -32,7 +29,6 @@ body{background:var(--bg);font-family:var(--font);font-size:15px;min-height:100v
 .setup-btn{width:100%;padding:10px;background:var(--ok);border:none;border-radius:6px;color:#fff;font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;margin-top:4px}
 .setup-note{font-size:11px;color:var(--text3);margin-top:8px;text-align:center}
 
-/* HEADER */
 #dashboard-screen{display:none}
 header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #d0cdc8}
 .logo p{font-size:15px;font-weight:600;color:var(--text)}
@@ -43,59 +39,52 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .btn-ghost:hover{border-color:var(--ok);color:var(--ok)}
 .btn-xs{background:none;border:none;color:var(--text3);font-size:10px;cursor:pointer;font-family:var(--font)}
 .btn-xs:hover{color:var(--red)}
-#csv-input{display:none}
-#csv-dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:none;flex-shrink:0}
 
-/* SUMMARY — etiquetas más grandes */
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .scard{border-radius:8px;padding:14px 18px;border:1px solid var(--n-border);background:var(--surface)}
 .scard-label{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text2);margin-bottom:6px}
 .scard-value{font-size:30px;font-weight:400;font-family:var(--mono);letter-spacing:-0.03em;line-height:1}
 .scard-sub{font-size:12px;color:var(--text3);margin-top:4px;font-weight:500}
-.scard.ok{background:var(--ok-light);border-color:var(--ok-border)} .scard.ok .scard-label{color:var(--ok)} .scard.ok .scard-value{color:var(--ok)} .scard.ok .scard-sub{color:var(--ok);opacity:0.7}
-.scard.danger{background:var(--red-light);border-color:var(--red-border)} .scard.danger .scard-label{color:var(--red)} .scard.danger .scard-value{color:var(--red)} .scard.danger .scard-sub{color:var(--red);opacity:0.7}
+.scard.ok{background:var(--ok-light);border-color:var(--ok-border)}.scard.ok .scard-label,.scard.ok .scard-value,.scard.ok .scard-sub{color:var(--ok)}
+.scard.danger{background:var(--red-light);border-color:var(--red-border)}.scard.danger .scard-label,.scard.danger .scard-value,.scard.danger .scard-sub{color:var(--red)}
 
-/* PROJECTS */
 .projects{display:flex;flex-direction:column;gap:7px}
 .pcard{background:var(--surface);border:1px solid #dddbd6;border-radius:8px;padding:13px 18px;display:grid;grid-template-columns:190px 1fr 110px 90px 130px;align-items:center;gap:16px}
 .pcard:hover{border-color:#c0bdb8;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
 
-/* nombre — más grande */
 .pname{font-size:16px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pid{font-size:11px;font-family:var(--mono);color:var(--text3)}
 
-/* barra */
 .bar-labels{display:flex;justify-content:space-between;font-size:12px;font-family:var(--mono);margin-bottom:4px;font-weight:500}
 .bar-labels .bl-left{color:var(--text2)}
 .bar-labels .bl-right{color:var(--text2)}
 .bar-labels .bl-over{color:var(--red);font-weight:700}
 .bar-track{height:8px;background:#ece9e4;border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px}
-.bar-fill.ok  {background:#2d9e62}
+.bar-fill.ok{background:#2d9e62}
 .bar-fill.warn{background:#d98a00}
 .bar-fill.over{background:#c83030}
 .bar-crit{font-size:11px;margin-top:4px;color:var(--red);font-weight:700;display:flex;align-items:center;gap:3px}
 
-/* pills — más grandes y legibles */
 .pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:7px;font-size:13px;font-weight:700;font-family:var(--mono);white-space:nowrap;border:1.5px solid transparent}
-.pill.ok   {background:var(--ok-pill);  color:var(--ok);  border-color:var(--ok-border)}
-.pill.warn {background:var(--warn-pill);color:var(--warn);border-color:var(--warn-border)}
-.pill.over {background:var(--red-pill); color:var(--red); border-color:var(--red-border)}
-.pill.crit {background:var(--crit-pill);color:var(--crit);border-color:var(--crit-border)}
-.pill.gray {background:var(--n-light);  color:var(--text3);border-color:var(--n-border)}
+.pill.ok{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
+.pill.warn{background:var(--warn-pill);color:var(--warn);border-color:var(--warn-border)}
+.pill.over{background:var(--red-pill);color:var(--red);border-color:var(--red-border)}
+.pill.crit{background:var(--crit-pill);color:var(--crit);border-color:var(--crit-border)}
+.pill.gray{background:var(--n-light);color:var(--text3);border-color:var(--n-border)}
+.pill.loading{background:var(--n-light);color:var(--text3);border-color:var(--n-border);animation:pulse 1.5s infinite}
 
 .ptag{display:inline-block;padding:5px 11px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:0.02em;border:1.5px solid transparent;text-align:center}
-.ptag.max {background:#fde8e8;color:#7a0000;border-color:#d06060}
+.ptag.max{background:#fde8e8;color:#7a0000;border-color:#d06060}
 .ptag.alta{background:#faeeda;color:#7a3d00;border-color:#f5b84a}
-.ptag.med {background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
+.ptag.med{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
 .ptag.baja{background:#e8eef4;color:#1a3a5c;border-color:#8ab0d0}
 .ptag.none{background:var(--n-light);color:var(--text3);border-color:var(--n-border)}
 
-/* fecha — más grande y llamativa */
 .pdate-val{font-size:15px;font-weight:800;font-family:var(--mono);padding:6px 10px;border-radius:7px;display:inline-block;border:1.5px solid transparent;text-align:right;letter-spacing:-0.01em;line-height:1}
-.pdate-val.ok  {background:var(--ok-pill);  color:var(--ok);  border-color:var(--ok-border)}
+.pdate-val.ok{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
 .pdate-val.warn{background:var(--warn-pill);color:var(--warn);border-color:var(--warn-border)}
-.pdate-val.red {background:var(--red-pill); color:var(--red); border-color:var(--red-border)}
+.pdate-val.red{background:var(--red-pill);color:var(--red);border-color:var(--red-border)}
 .pdate-days{font-size:11px;color:var(--text3);margin-top:3px;text-align:right;font-weight:600}
 .pdate-days.urgent{color:var(--red)}
 .pdate-days.soon{color:var(--warn)}
@@ -104,24 +93,18 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-right:6px;animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
 #footer-ts{font-size:10px;color:var(--text3);text-align:right;margin-top:10px}
-
-@media(max-width:1000px){
-  body{padding:12px}
-  .summary{grid-template-columns:1fr 1fr}
-  .pcard{grid-template-columns:1fr;gap:10px}
-  .pdate-val,.pdate-days{text-align:left}
-}
 </style>
 </head>
 <body>
 
 <div id="setup-screen">
   <h1>Configuración inicial</h1>
-  <p>Introduce las claves de Trello. Se guardarán en este navegador.</p>
+  <p>Introduce las claves de acceso. Se guardarán en este navegador.</p>
   <div class="field"><label>Trello API Key</label><input type="password" id="input-trello-key" autocomplete="off"></div>
   <div class="field"><label>Trello Token</label><input type="password" id="input-trello-token" autocomplete="off"></div>
+  <div class="field"><label>Clockify API Key</label><input type="password" id="input-clockify-key" autocomplete="off"></div>
   <button class="setup-btn" onclick="saveAndStart()">Guardar y abrir dashboard</button>
-  <p class="setup-note">Solo se envían datos a Trello.</p>
+  <p class="setup-note">Las claves se guardan solo en este dispositivo.</p>
 </div>
 
 <div id="dashboard-screen">
@@ -132,13 +115,7 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
     </div>
     <div class="hbtns">
       <span id="last-update"></span>
-      <div id="csv-dot"></div>
       <button class="btn-xs" onclick="resetConfig()">Cambiar claves</button>
-      <label class="btn-ghost" for="csv-input">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        CSV Clockify
-      </label>
-      <input type="file" id="csv-input" accept=".csv" onchange="handleCSV(event)">
       <button class="btn-ghost" onclick="loadDashboard()" id="refresh-btn">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
         Actualizar
@@ -153,42 +130,44 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
   </div>
 
   <div id="projects-container">
-    <div id="status-msg"><span class="dot"></span>Cargando datos de Trello...</div>
+    <div id="status-msg"><span class="dot"></span>Cargando...</div>
   </div>
   <p id="footer-ts"></p>
 </div>
 
 <script>
 const OVER_THRESHOLD = 60;
-let TRELLO_KEY, TRELLO_TOKEN;
-let clockifyHours = {};
+const WS_ID = '61b31bd753f40a3f6ce5ce55';
+let TRELLO_KEY, TRELLO_TOKEN, CLOCKIFY_KEY;
 let trelloProjects = [];
 
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
 const daysUntil = d => d ? Math.ceil((new Date(d)-new Date())/86400000) : null;
 const fmtDate = d => d ? new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'2-digit'}) : null;
 
+function parseDuration(iso){
+  if(!iso) return 0;
+  const m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?/);
+  if(!m) return 0;
+  return Math.round((parseFloat(m[1]||0)*3600+parseFloat(m[2]||0)*60+parseFloat(m[3]||0))/3600);
+}
+
 function loadConfig(){
-  TRELLO_KEY = localStorage.getItem('mq_trello_key');
-  TRELLO_TOKEN = localStorage.getItem('mq_trello_token');
-  const saved = localStorage.getItem('mq_clockify_csv');
-  if(saved){
-    try{
-      const o=JSON.parse(saved);
-      clockifyHours=o.hours;
-      const dot=document.getElementById('csv-dot');
-      if(dot){dot.style.display='block';dot.title='CSV: '+o.filename+' ('+o.date+')';}
-    }catch(e){}
-  }
-  return TRELLO_KEY&&TRELLO_TOKEN;
+  TRELLO_KEY=localStorage.getItem('mq_trello_key');
+  TRELLO_TOKEN=localStorage.getItem('mq_trello_token');
+  CLOCKIFY_KEY=localStorage.getItem('mq_clockify_key');
+  return TRELLO_KEY&&TRELLO_TOKEN&&CLOCKIFY_KEY;
 }
 
 function saveAndStart(){
   const k=document.getElementById('input-trello-key').value.trim();
   const t=document.getElementById('input-trello-token').value.trim();
-  if(!k||!t){alert('Rellena los dos campos.');return}
-  localStorage.setItem('mq_trello_key',k);localStorage.setItem('mq_trello_token',t);
-  TRELLO_KEY=k;TRELLO_TOKEN=t;
+  const c=document.getElementById('input-clockify-key').value.trim();
+  if(!k||!t||!c){alert('Rellena los tres campos.');return}
+  localStorage.setItem('mq_trello_key',k);
+  localStorage.setItem('mq_trello_token',t);
+  localStorage.setItem('mq_clockify_key',c);
+  TRELLO_KEY=k;TRELLO_TOKEN=t;CLOCKIFY_KEY=c;
   document.getElementById('setup-screen').style.display='none';
   document.getElementById('dashboard-screen').style.display='block';
   loadDashboard();
@@ -196,34 +175,10 @@ function saveAndStart(){
 
 function resetConfig(){
   if(!confirm('¿Cambiar claves?'))return;
-  localStorage.removeItem('mq_trello_key');localStorage.removeItem('mq_trello_token');
+  localStorage.removeItem('mq_trello_key');
+  localStorage.removeItem('mq_trello_token');
+  localStorage.removeItem('mq_clockify_key');
   location.reload();
-}
-
-function handleCSV(ev){
-  const f=ev.target.files[0];if(!f)return;
-  const r=new FileReader();
-  r.onload=e=>{
-    parseCSV(e.target.result);
-    localStorage.setItem('mq_clockify_csv',JSON.stringify({hours:clockifyHours,filename:f.name,date:new Date().toLocaleString('es-ES')}));
-    const dot=document.getElementById('csv-dot');
-    dot.style.display='block';dot.title='CSV: '+f.name;
-    renderProjects();
-  };
-  r.readAsText(f,'UTF-8');
-}
-
-function parseCSV(text){
-  clockifyHours={};
-  for(const line of text.split('\n').slice(1)){
-    if(!line.trim())continue;
-    const cols=line.match(/(".*?"|[^,]+)(?=,|$)/g);
-    if(!cols||cols.length<5)continue;
-    const project=cols[0].replace(/"/g,'').trim();
-    const decimal=parseFloat(cols[4].replace(/"/g,'').trim());
-    if(!project||isNaN(decimal))continue;
-    clockifyHours[norm(project)]=(clockifyHours[norm(project)]||0)+decimal;
-  }
 }
 
 function setStatus(msg){document.getElementById('projects-container').innerHTML=`<div id="status-msg"><span class="dot"></span>${msg}</div>`;}
@@ -231,6 +186,20 @@ function setStatus(msg){document.getElementById('projects-container').innerHTML=
 async function trelloFetch(path){
   const sep=path.includes('?')?'&':'?';
   return (await fetch('https://api.trello.com/1'+path+sep+`key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`)).json();
+}
+
+async function getClockifyHours(){
+  // Cargar todos los proyectos (activos y archivados) con su duración real
+  const [active, archived] = await Promise.all([
+    fetch(`https://api.clockify.me/api/v1/workspaces/${WS_ID}/projects?page-size=200&archived=false`,{headers:{'X-Api-Key':CLOCKIFY_KEY}}).then(r=>r.json()),
+    fetch(`https://api.clockify.me/api/v1/workspaces/${WS_ID}/projects?page-size=200&archived=true`,{headers:{'X-Api-Key':CLOCKIFY_KEY}}).then(r=>r.json())
+  ]);
+  const all=[...(Array.isArray(active)?active:[]),...(Array.isArray(archived)?archived:[])];
+  const map={};
+  for(const p of all){
+    map[norm(p.name)]=parseDuration(p.duration);
+  }
+  return map;
 }
 
 async function loadDashboard(){
@@ -270,7 +239,11 @@ async function loadDashboard(){
       }
       trelloProjects.push({name:card.name,projectId,assigned,due:card.due||null,priority});
     }
-    renderProjects();
+
+    setStatus('Cargando horas de Clockify...');
+    const clockifyHours=await getClockifyHours();
+
+    renderProjects(clockifyHours);
     const ts=new Date().toLocaleTimeString('es-ES');
     document.getElementById('last-update').textContent='Act. '+ts;
     document.getElementById('footer-ts').textContent='Última actualización: '+ts;
@@ -289,12 +262,12 @@ function prioClass(raw){
   return ['none',raw||'—'];
 }
 
-function renderProjects(){
+function renderProjects(clockifyHours){
   if(!trelloProjects.length){setStatus('Sin proyectos con ID Proyecto en Trello.');return;}
 
   const enriched=trelloProjects.map(p=>{
     const key=norm(p.projectId);
-    const consumed=Math.round(clockifyHours[key]||0);
+    const consumed=clockifyHours[key]||0;
     const over=p.assigned>0?Math.max(0,consumed-p.assigned):0;
     const isCrit=over>OVER_THRESHOLD;
     const pct=p.assigned>0?Math.min(Math.round(consumed/p.assigned*100),100):0;
@@ -320,7 +293,6 @@ function renderProjects(){
     const dateStr=fmtDate(p.due);
     const dt=days===null?'':days===0?'hoy':days<0?`hace ${Math.abs(days)}d`:`en ${days}d`;
     const dtCls=days!==null&&days<=2?'urgent':days!==null&&days<=7?'soon':'';
-
     const barCls=p.isCrit||p.over>0?'over':p.pct>=70?'warn':'ok';
 
     let pillCls,pillTxt;
