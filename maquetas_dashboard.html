@@ -42,50 +42,54 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .scard{border-radius:8px;padding:14px 18px;border:1px solid var(--n-border);background:var(--surface)}
-.scard-label{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text2);margin-bottom:6px}
-.scard-value{font-size:30px;font-weight:400;font-family:var(--mono);letter-spacing:-0.03em;line-height:1}
-.scard-sub{font-size:12px;color:var(--text3);margin-top:4px;font-weight:500}
+.scard-label{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text2);margin-bottom:6px}
+.scard-value{font-size:36px;font-weight:400;font-family:var(--mono);letter-spacing:-0.03em;line-height:1}
+.scard-sub{font-size:13px;color:var(--text3);margin-top:4px;font-weight:500}
 .scard.ok{background:var(--ok-light);border-color:var(--ok-border)}.scard.ok .scard-label,.scard.ok .scard-value,.scard.ok .scard-sub{color:var(--ok)}
 .scard.danger{background:var(--red-light);border-color:var(--red-border)}.scard.danger .scard-label,.scard.danger .scard-value,.scard.danger .scard-sub{color:var(--red)}
 
-.projects{display:flex;flex-direction:column;gap:7px}
-.pcard{background:var(--surface);border:1px solid #dddbd6;border-radius:8px;padding:13px 18px;display:grid;grid-template-columns:190px 1fr 110px 90px 130px;align-items:center;gap:16px}
+.projects{display:flex;flex-direction:column;gap:8px}
+.pcard{background:var(--surface);border:1px solid #dddbd6;border-radius:8px;padding:14px 20px;display:grid;grid-template-columns:200px 1fr 120px 95px 140px;align-items:center;gap:16px}
 .pcard:hover{border-color:#c0bdb8;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
 
-.pname{font-size:16px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* nombre */
+.pname{font-size:18px;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pid{font-size:11px;font-family:var(--mono);color:var(--text3)}
 
-.bar-labels{display:flex;justify-content:space-between;font-size:12px;font-family:var(--mono);margin-bottom:4px;font-weight:500}
+/* barra */
+.bar-labels{display:flex;justify-content:space-between;font-size:13px;font-family:var(--mono);margin-bottom:5px;font-weight:600}
 .bar-labels .bl-left{color:var(--text2)}
 .bar-labels .bl-right{color:var(--text2)}
-.bar-labels .bl-over{color:var(--red);font-weight:700}
-.bar-track{height:8px;background:#ece9e4;border-radius:4px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px}
+.bar-labels .bl-over{color:var(--red);font-weight:800}
+.bar-track{height:10px;background:#ece9e4;border-radius:5px;overflow:hidden}
+.bar-fill{height:100%;border-radius:5px}
 .bar-fill.ok{background:#2d9e62}
 .bar-fill.warn{background:#d98a00}
 .bar-fill.over{background:#c83030}
-.bar-crit{font-size:11px;margin-top:4px;color:var(--red);font-weight:700;display:flex;align-items:center;gap:3px}
+.bar-crit{font-size:12px;margin-top:5px;color:var(--red);font-weight:700;display:flex;align-items:center;gap:4px}
 
-.pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:7px;font-size:13px;font-weight:700;font-family:var(--mono);white-space:nowrap;border:1.5px solid transparent}
+/* pills estado */
+.pill{display:inline-flex;align-items:center;justify-content:center;padding:7px 14px;border-radius:8px;font-size:15px;font-weight:800;font-family:var(--mono);white-space:nowrap;border:2px solid transparent}
 .pill.ok{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
 .pill.warn{background:var(--warn-pill);color:var(--warn);border-color:var(--warn-border)}
 .pill.over{background:var(--red-pill);color:var(--red);border-color:var(--red-border)}
 .pill.crit{background:var(--crit-pill);color:var(--crit);border-color:var(--crit-border)}
 .pill.gray{background:var(--n-light);color:var(--text3);border-color:var(--n-border)}
-.pill.loading{background:var(--n-light);color:var(--text3);border-color:var(--n-border);animation:pulse 1.5s infinite}
 
-.ptag{display:inline-block;padding:5px 11px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:0.02em;border:1.5px solid transparent;text-align:center}
+/* prioridad */
+.ptag{display:inline-block;padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;letter-spacing:0.02em;border:2px solid transparent;text-align:center}
 .ptag.max{background:#fde8e8;color:#7a0000;border-color:#d06060}
 .ptag.alta{background:#faeeda;color:#7a3d00;border-color:#f5b84a}
 .ptag.med{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
 .ptag.baja{background:#e8eef4;color:#1a3a5c;border-color:#8ab0d0}
 .ptag.none{background:var(--n-light);color:var(--text3);border-color:var(--n-border)}
 
-.pdate-val{font-size:15px;font-weight:800;font-family:var(--mono);padding:6px 10px;border-radius:7px;display:inline-block;border:1.5px solid transparent;text-align:right;letter-spacing:-0.01em;line-height:1}
+/* fecha — grande y llamativa */
+.pdate-val{font-size:17px;font-weight:800;font-family:var(--mono);padding:7px 11px;border-radius:8px;display:inline-block;border:2px solid transparent;text-align:right;letter-spacing:-0.01em;line-height:1}
 .pdate-val.ok{background:var(--ok-pill);color:var(--ok);border-color:var(--ok-border)}
 .pdate-val.warn{background:var(--warn-pill);color:var(--warn);border-color:var(--warn-border)}
 .pdate-val.red{background:var(--red-pill);color:var(--red);border-color:var(--red-border)}
-.pdate-days{font-size:11px;color:var(--text3);margin-top:3px;text-align:right;font-weight:600}
+.pdate-days{font-size:12px;color:var(--text3);margin-top:3px;text-align:right;font-weight:700}
 .pdate-days.urgent{color:var(--red)}
 .pdate-days.soon{color:var(--warn)}
 
@@ -93,6 +97,13 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-right:6px;animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
 #footer-ts{font-size:10px;color:var(--text3);text-align:right;margin-top:10px}
+
+@media(max-width:1000px){
+  body{padding:12px}
+  .summary{grid-template-columns:1fr 1fr}
+  .pcard{grid-template-columns:1fr;gap:10px}
+  .pdate-val,.pdate-days{text-align:left}
+}
 </style>
 </head>
 <body>
@@ -138,6 +149,12 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 <script>
 const OVER_THRESHOLD = 60;
 const WS_ID = '61b31bd753f40a3f6ce5ce55';
+
+// Proyectos con filtro de fecha — solo cuentan horas desde la fecha indicada
+const DATE_FILTERS = {
+  'campus valdebernardo': '2026-01-01T00:00:00Z'
+};
+
 let TRELLO_KEY, TRELLO_TOKEN, CLOCKIFY_KEY;
 let trelloProjects = [];
 
@@ -188,16 +205,40 @@ async function trelloFetch(path){
   return (await fetch('https://api.trello.com/1'+path+sep+`key=${TRELLO_KEY}&token=${TRELLO_TOKEN}`)).json();
 }
 
+async function getHoursFromEntries(projectId, fromDate){
+  // Obtener horas desde una fecha concreta via time-entries
+  let page=1, total=0;
+  while(true){
+    const url=`https://api.clockify.me/api/v1/workspaces/${WS_ID}/time-entries?project=${projectId}&start=${fromDate}&page-size=200&page=${page}`;
+    const entries=await fetch(url,{headers:{'X-Api-Key':CLOCKIFY_KEY}}).then(r=>r.json());
+    if(!Array.isArray(entries)||entries.length===0) break;
+    for(const e of entries){
+      if(e.timeInterval&&e.timeInterval.duration){
+        total+=parseDuration(e.timeInterval.duration)*3600;
+      }
+    }
+    if(entries.length<200) break;
+    page++;
+  }
+  return Math.round(total/3600);
+}
+
 async function getClockifyHours(){
-  // Cargar todos los proyectos (activos y archivados) con su duración real
-  const [active, archived] = await Promise.all([
+  const [active,archived]=await Promise.all([
     fetch(`https://api.clockify.me/api/v1/workspaces/${WS_ID}/projects?page-size=200&archived=false`,{headers:{'X-Api-Key':CLOCKIFY_KEY}}).then(r=>r.json()),
     fetch(`https://api.clockify.me/api/v1/workspaces/${WS_ID}/projects?page-size=200&archived=true`,{headers:{'X-Api-Key':CLOCKIFY_KEY}}).then(r=>r.json())
   ]);
   const all=[...(Array.isArray(active)?active:[]),...(Array.isArray(archived)?archived:[])];
   const map={};
+
   for(const p of all){
-    map[norm(p.name)]=parseDuration(p.duration);
+    const key=norm(p.name);
+    if(DATE_FILTERS[key]){
+      // Este proyecto usa filtro de fecha — llamamos a time-entries
+      map[key]=await getHoursFromEntries(p.id, DATE_FILTERS[key]);
+    } else {
+      map[key]=parseDuration(p.duration);
+    }
   }
   return map;
 }
@@ -242,8 +283,8 @@ async function loadDashboard(){
 
     setStatus('Cargando horas de Clockify...');
     const clockifyHours=await getClockifyHours();
-
     renderProjects(clockifyHours);
+
     const ts=new Date().toLocaleTimeString('es-ES');
     document.getElementById('last-update').textContent='Act. '+ts;
     document.getElementById('footer-ts').textContent='Última actualización: '+ts;
@@ -324,7 +365,7 @@ function renderProjects(clockifyHours){
               :`<span class="bl-right">—</span>`}
         </div>
         <div class="bar-track"><div class="bar-fill ${barCls}" style="width:${p.pct}%"></div></div>
-        ${p.isCrit?`<div class="bar-crit"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Desfase crítico: +${p.over}h</div>`:''}
+        ${p.isCrit?`<div class="bar-crit"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Desfase crítico: +${p.over}h</div>`:''}
       </div>
       <div style="text-align:center"><span class="pill ${pillCls}">${pillTxt}</span></div>
       <div style="text-align:center"><span class="ptag ${pCls}">${pTxt}</span></div>
