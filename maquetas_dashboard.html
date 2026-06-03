@@ -151,6 +151,10 @@ const OVER_THRESHOLD = 60;
 const WS_ID = '61b31bd753f40a3f6ce5ce55';
 
 // Proyectos con filtro de fecha — solo cuentan horas desde la fecha indicada
+const HOUR_OFFSETS = {
+  'campus valdebernardo': 670
+};
+
 const DATE_FILTERS = {
   'campus valdebernardo': '2026-01-01T00:00:00Z'
 };
@@ -233,9 +237,10 @@ async function getClockifyHours(){
 
   for(const p of all){
     const key=norm(p.name);
-    if(DATE_FILTERS[key]){
+    if(HOUR_OFFSETS[key]){
+      map[key]=Math.max(0, parseDuration(p.duration) - HOUR_OFFSETS[key]);
+    } else if(DATE_FILTERS[key]){
       // Este proyecto usa filtro de fecha — llamamos a time-entries
-      map[key]=await getHoursFromEntries(p.id, DATE_FILTERS[key]);
     } else {
       map[key]=parseDuration(p.duration);
     }
